@@ -18,7 +18,7 @@ public class Postagem {
 	
 	@Id
 	@GeneratedValue(strategy = GenerationType.IDENTITY)
-	private long id;
+	private Long id;
 	
 	@NotBlank(message = "O Atributo título é obrigatório!")
 	@Size(min= 5, max= 100, message = "O Atributo título deve ter no minimo 5 e no maximo 100 caracters!")
@@ -60,6 +60,7 @@ public class Postagem {
 	public void setData(LocalDateTime data) {
 		this.data = data;
 	}
+	
 	
 	
 }
