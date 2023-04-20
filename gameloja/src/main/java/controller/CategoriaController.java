@@ -1,4 +1,5 @@
 package controller;
+
 import java.util.List;
 import java.util.Optional;
 
@@ -19,38 +20,35 @@ import org.springframework.web.server.ResponseStatusException;
 
 import jakarta.validation.Valid;
 import model.Categoria;
-import model.Produto;
 import repository.CategoriaRepository;
-import repository.ProdutoRepository;
 
 
 @RestController
 @RequestMapping("/categorias")
 @CrossOrigin(origins = "*", allowedHeaders = "*")
 public class CategoriaController {
+	
 	@Autowired
-	private CategoriaRepository categoriaRepository;
- @Autowired
-    private ProdutoRepository produtoRepository;
-    
-    @GetMapping
-    public ResponseEntity<List<Produto>> getAll(){
-        return ResponseEntity.ok(produtoRepository.findAll());
-    }
-   
-    @GetMapping("/{id}")
-    public ResponseEntity<Produto> getById(@PathVariable Long id){
-        return produtoRepository.findById(id)
-            .map(resposta -> ResponseEntity.ok(resposta))
-            .orElse(ResponseEntity.status(HttpStatus.NOT_FOUND).build());
-    }
-    
-    @GetMapping("/tipo/{tipo}")
+	CategoriaRepository categoriaRepository;
+	
+	@GetMapping
+	public ResponseEntity <List<Categoria>> getAll(){
+		return ResponseEntity.ok(categoriaRepository.findAll());
+	}
+	
+	@GetMapping("{id}")
+	public ResponseEntity<Categoria>getById(@PathVariable Long id){
+		return categoriaRepository.findById(id)
+			.map(resposta -> ResponseEntity.ok(resposta))
+			.orElse(ResponseEntity.status(HttpStatus.NOT_FOUND).build());
+	}
+	
+	@GetMapping("/tipo/{tipo}")
 	public ResponseEntity <List<Categoria>> getByTipo(@PathVariable String tipo){
 		return ResponseEntity.ok(categoriaRepository.findAllByTipoContainingIgnoreCase(tipo));
 	}
-    
-    @PostMapping
+	
+	@PostMapping
 	public ResponseEntity<Categoria>post (@Valid @RequestBody Categoria categoria){
 		return ResponseEntity.status(HttpStatus.CREATED)
 				.body(categoriaRepository.save(categoria));

@@ -1,3 +1,4 @@
+
 package com.generation.gameloja;
 
 import org.springframework.boot.SpringApplication;
