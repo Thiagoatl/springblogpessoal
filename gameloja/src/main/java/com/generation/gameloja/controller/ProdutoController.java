@@ -1,4 +1,4 @@
-package controller;
+package com.generation.gameloja.controller;
 
 import java.util.List;
 import java.util.Optional;
@@ -18,15 +18,15 @@ import org.springframework.web.bind.annotation.ResponseStatus;
 import org.springframework.web.bind.annotation.RestController;
 import org.springframework.web.server.ResponseStatusException;
 
-import jakarta.validation.Valid;
-import model.Categoria;
-import repository.CategoriaRepository;
+import com.generation.gameloja.model.Categoria;
+import com.generation.gameloja.repository.CategoriaRepository;
 
+import jakarta.validation.Valid;
 
 @RestController
 @RequestMapping("/categorias")
 @CrossOrigin(origins = "*", allowedHeaders = "*")
-public class CategoriaController {
+public class ProdutoController {
 	
 	@Autowired
 	CategoriaRepository categoriaRepository;

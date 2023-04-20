@@ -1,4 +1,4 @@
-package model;
+package com.generation.gameloja.model;
 
 import java.math.BigDecimal;
 
